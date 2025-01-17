@@ -1,0 +1,46 @@
+# Modify this code to update the DB schema diagram.
+# To reset the sample schema, replace everything with
+# two dots ('..' - without quotes).
+
+users
+------------
+id PK int
+email string INDEX
+name string INDEX
+password string
+role_id int
+address string
+
+order
+------------
+id PK int
+user_id int FK >- users.id
+creation_date Date
+total_amount money
+status string
+
+cart
+-----------
+id PK int
+order_id int FK >- order.id
+product_id int FK >- products.id
+quantity int
+
+products
+------------
+id PK int
+title varchar(250) # Field documentation comment 3
+type varchar(60)
+author string
+published int
+price money
+summary string
+quantity int
+creation_date Date
+gender_id int FK >- gender.id
+
+gender
+---------
+id PK int
+name varchar(200)
+description string
